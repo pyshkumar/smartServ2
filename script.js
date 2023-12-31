@@ -16,8 +16,8 @@ fileInput.addEventListener("change", (event) => {
   const reader = new FileReader();
   reader.onload = (event) => {
     const parsedData = JSON.parse(event.target.result);
-    // Populate Available Fields select element:
-    const availableFields = Object.keys(parsedData.products[12]); // Assuming all products have the same fields
+
+    const availableFields = Object.keys(parsedData.products[12]); 
     availableFields.forEach((field) => {
       const option = document.createElement("option");
       option.text = field;
@@ -25,7 +25,7 @@ fileInput.addEventListener("change", (event) => {
       availableFieldsSelect.add(option);
     });
 
-    // Button click handling:
+
     addFieldButton.addEventListener("click", () => {
       const selectedOptions = availableFieldsSelect.selectedOptions;
       for (const option of selectedOptions) {
@@ -44,25 +44,25 @@ fileInput.addEventListener("change", (event) => {
       }
     });
 
-    // Convert the object into an array of product objects:
+
     const productsArray = Object.values(parsedData.products);
 
-    // Sort the array by popularity (descending):
+
     productsArray.sort((a, b) => b.popularity - a.popularity);
 
     person = productsArray;
-    // Use the sorted productsArray for subsequent tasks
+
     displayDataInTable(productsArray);
   };
   reader.readAsText(file);
 });
 
 function displayDataInTable(data) {
-  // Clear any existing table rows:
+
   data = person;
   productTable.innerHTML = "";
 
-  // Create table header:
+
   if (selectedFieldsSelect.selectedOptions) {
     const tableHeader = document.createElement("thead");
     const headerRow = document.createElement("tr");
@@ -75,17 +75,17 @@ function displayDataInTable(data) {
     tableHeader.appendChild(headerRow);
     productTable.appendChild(tableHeader);
 
-    // Create table body:
+
     const tableBody = document.createElement("tbody");
 
-    // Iterate through products using a for...in loop:
+
     for (const productKey in data) {
       const product = data[productKey];
       const tableRow = document.createElement("tr");
 
-      // Iterate through options using a for...in loop:
+
       for (const optionKey in selectedFieldsSelect.selectedOptions) {
-        //console.log(typeof selectedFieldsSelect.selectedOptions[optionKey]);
+
         const option = selectedFieldsSelect.selectedOptions[optionKey];
         console.log(typeof product["title"]);
         const tableCell = document.createElement("td");
