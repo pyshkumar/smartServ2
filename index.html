@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Product Data App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Import Products</h1>
+    <div id="file-selection">
+      <label for="file-input">Select file (.json):</label>
+      <input type="file" id="file-input" accept=".json" />
+    </div>
+    <h2>Display Handling</h2>
+    <div id="field-selectors">
+      <div class="field-list">
+        <h3>Available Fields</h3>
+        <select id="available-fields" multiple></select>
+      </div>
+      <div class="buttons">
+        <button id="add-field-button">&gt;&gt;</button>
+        <button id="remove-field-button">&lt;&lt;</button>
+      </div>
+      <div class="field-list">
+        <h3>Fields to be Displayed</h3>
+        <select id="selected-fields" multiple></select>
+      </div>
+    </div>
+    <table id="product-table">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+    <script src="script.js"></script>
+  </body>
+</html>
